@@ -1,0 +1,112 @@
+<nav id="app_main-menu-wrapper">
+  <ul class="nav-logo nav-mobile">
+    <li class="nav-item logo-wrapper">
+      <a href="javascript:void(0)" [routerLink]="['/dashboards']">
+        <div class="logo">
+          <img style="width: 35px; height: 35px; top: 15px;" src="assets/img/logo/monitoring.png" alt="Logo">
+        </div>
+        <h1 class="brand-text" style="letter-spacing: 0px!important; padding: 20px 0 0 55px">Sala de Situação</h1>
+      </a>
+    </li>
+  </ul>
+  <div class="sidebar-inner sidebar-push" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+    <profile></profile>
+    <ul class="nav nav-pills flex-column">
+      <!-- <li class="sidebar-header">NAVIGATION</li> -->
+      <li routerLinkActive="active">
+        <a href="javascript:void(0)" class="">
+          <i class="zmdi zmdi-accounts-alt"></i>Pacientes
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a href="javascript:void(0)" class="">
+          <i class="zmdi zmdi-view-dashboard"></i>Dashboards
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a href="javascript:void(0)" [routerLink]="['/programas']" class="">
+          <i class="zmdi zmdi-playlist-plus"></i>Programas
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a href="javascript:void(0)" class="">
+          <i class="zmdi zmdi-file-text"></i>Protocolos
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a href="javascript:void(0)" class="">
+          <i class="zmdi zmdi-settings"></i>Configurações
+        </a>
+      </li>
+      <!-- <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+        <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle>
+          <i class="zmdi zmdi-view-carousel"></i>Layouts</a>
+        <ul class="nav-sub">
+          <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+            <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle>Full Width</a>
+            <ul class="nav-sub">
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/full-width-v1']">Full Width v1</a>
+              </li>
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/full-width-v2']">Full Width v2</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav-sub">
+          <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+            <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle>Boxed Layouts</a>
+            <ul class="nav-sub">
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/boxed-layout-v1']">Boxed Layout v1</a>
+              </li>
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/boxed-layout-v2']">Boxed Layout v2</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav-sub">
+          <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+            <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle>Detached Toolbar</a>
+            <ul class="nav-sub">
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/detached-toolbar-left']">Detached Toolbar Left</a>
+              </li>
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/detached-toolbar-right']">Detached Toolbar Right</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav-sub">
+          <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+            <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle>Left Side Nav</a>
+            <ul class="nav-sub">
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/left-side-nav-v1']">Left Side Nav v1</a>
+              </li>
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/left-side-nav-v2']">Left Side Nav v2</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav-sub">
+          <li routerLinkActive="active open" appNavDropdown class="nav-dropdown">
+            <a md-ripple href="javascript:void(0)" class="" appNavDropdownToggle>Right Side Nav</a>
+            <ul class="nav-sub">
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/right-side-nav-v1']">Right Side Nav v1</a>
+              </li>
+              <li routerLinkActive="active">
+                <a href="javascript:void(0)" [routerLink]="['/page-layouts/right-side-nav-v2']">Right Side Nav v2</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li> -->
+    </ul>
+  </div>
+</nav>

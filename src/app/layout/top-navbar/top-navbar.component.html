@@ -1,0 +1,99 @@
+<nav role="navigation" class="navbar">
+  <ul class="navbar-nav nav-logo">
+    <li class="nav-item logo-wrapper">
+      <a href="javascript:void(0)" [routerLink]="['/dashboards']">
+        <div class="logo">
+          <img style="width: 35px; height: 35px; top: 15px;" src="assets/img/logo/monitoring.png" alt="Logo">
+        </div>
+        <h5 class="brand-text" style="letter-spacing: 0px!important; padding: 14px 0 0 40px">Sala de Situação</h5>
+      </a>
+    </li>
+  </ul>
+  <ul class="navbar-nav nav-left">
+    <li class="nav-item menu-icon">
+      <a md-ripple href="javascript:void(0)" role="button" (click)="toggleMenuSideabar()" class="nav-link menu-trigger">
+        <i class="mdi mdi-backburger"></i>
+      </a>
+    </li>
+    <li class="nav-item hidden-sm">
+      <a md-ripple href="javascript:void(0)" (click)="toggleAppMobileLeftMenuSidebar()" class="nav-link mobile-menu-trigger">
+        <i class="mdi mdi-backburger"></i>
+      </a>
+    </li>
+    <!-- <li class="nav-item hidden-sm-down">
+      <a md-ripple href="javascript:void(0)" (click)="toggleProfile()" class="nav-link">
+        <i class="zmdi zmdi-account"></i>
+      </a>
+    </li>
+    <li class="nav-item dropdown dropdown-lg app_menu_launcher hidden-sm-down" ngbDropdown>
+      <a md-ripple href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+        <i class="zmdi zmdi-apps"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-lg-menu  p-15 min-h-200">
+        <li>
+
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item dropdown mega hidden-sm-down" ngbDropdown>
+      <a md-ripple href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+        <span>Mega</span>
+        <span class="caret"></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu full-width p-15 min-h-200">
+
+      </div>
+    </li> -->
+  </ul>
+  <ul class="navbar-nav nav-right">
+    <li class="nav-item">
+      <a md-ripple href="javascript:void(0)" class="nav-link">
+        <i class="zmdi zmdi-notifications"></i>
+      </a>
+    </li>
+    <li class="nav-item dropdown dropdown-lg hidden-sm-down" ngbDropdown>
+      <a md-ripple href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+        <i class="zmdi zmdi-comment-alt-text"></i>
+      </a>
+    </li>
+    <li class="nav-item dropdown dropdown-lg " ngbDropdown>
+      <a md-ripple href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+        <img src="assets/img/andre.png" class="img-xs rounded-circle">
+        <!-- <span style="max-width: 150px;" class="text-truncate d-inline-flex">
+                </span> -->
+      </a>
+      <ul class="dropdown-menu dropdown-menu-right p-10 custom-dropdown-menu">
+        <li class="text-center text-truncate text-uppercase border-bottom" style="max-width: 180px;height: 25px;">
+          <span class="font-weight-800"> André Gueiros </span>
+        </li>
+        <li>
+          <a class="p-2 btn-primary-hover" href="#" (click)="open(content)">
+            <!-- Meu perfil  -->
+            Meu Perfil
+            <i class="zmdi float-right"></i>
+          </a>
+        </li>
+        <li>
+          <a class="p-2 btn-primary-hover" href="#">
+            <!-- Trocar senha -->
+            Trocar Senha
+            <i class="zmdi  float-right"></i>
+          </a>
+        </li>
+        <li>
+          <a class="p-2 btn-primary-hover" href="#">
+            <!-- Sair -->
+            Sair
+            <i class="zmdi zmdi-sign-in float-right"></i>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- <li class="nav-item">
+        <a md-ripple href="javascript:void(0)" (click)="toggleAppRightSidebar()" class="nav-link">
+          <i [ngClass]="{'mdi-playlist-minus': false, 'mdi-playlist-plus': true}" class="mdi"></i>
+        </a>
+      </li> -->
+  </ul>
+</nav>
+<topbar-search #search></topbar-search>
