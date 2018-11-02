@@ -25,8 +25,16 @@ import { MatRippleModule } from '@angular/material';
 import { FullCalendarModule } from 'ng-fullcalendar';
 
 import { ElCheckboxComponent } from './components/el-checkbox/el-checkbox.component';
+import { ChartModule } from 'angular-highcharts';
+import { ChartComponent } from './components/chart/chart.component';
+import { MaskCustomDirective } from './directives/mask-custom.directive';
+
+import { MaskCustomPipe } from './pipes/mask.custom.pipe';
+import { UtilsPipe } from './pipes/utils.pipe';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
     CommonModule,
@@ -38,13 +46,20 @@ import { ElCheckboxComponent } from './components/el-checkbox/el-checkbox.compon
     MatButtonModule,
     MatRippleModule,
     FullCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartModule,
+    ToastrModule.forRoot(),
+    ScrollToModule.forRoot()
   ],
   declarations: [
     AppBackdropComponent,
     FooterComponent,
     Profile,
-    ElCheckboxComponent
+    ElCheckboxComponent,
+    MaskCustomDirective,
+    MaskCustomPipe,
+    ChartComponent,
+    UtilsPipe
   ],
   exports: [
     CommonModule,
@@ -60,7 +75,14 @@ import { ElCheckboxComponent } from './components/el-checkbox/el-checkbox.compon
     MatRippleModule,
     FullCalendarModule,
     ElCheckboxComponent,
-    HttpClientModule
+    HttpClientModule,
+    MaskCustomDirective,
+    MaskCustomPipe,
+    UtilsPipe,
+    ChartModule,
+    ToastrModule,
+    ChartComponent,
+    ScrollToModule
   ]
 })
 export class SharedModule {

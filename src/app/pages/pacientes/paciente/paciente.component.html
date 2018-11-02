@@ -1,0 +1,507 @@
+<div class="card m-2" id="back">
+  <div class="card-block p-0">
+    <div class="d-flex">
+      <div class="" style="width: 100px;">
+        <div class="p-1">
+          <img class="card-img-top custom-img rounded-circle" [src]="paciente?.image" onError="this.src='assets/img/medical/user.png'"
+            alt="" style="height: 80px; width: 80px;">
+        </div>
+      </div>
+      <div class="flex-fill pt-1">
+        <div>
+          <h2>
+            {{paciente?.name}}
+          </h2>
+        </div>
+        <div>
+          <h4>{{paciente?.gender| utilsPipe: 'gender'}}, {{paciente?.birthDate| utilsPipe: 'age'}}, Bradesco Saúde<br />
+            177cm, 55kg<br />
+            TF, DB, CD</h4>
+        </div>
+      </div>
+      <div class="flex-fill pt-1">
+        <div>
+          <h4>Último Contato: 17/06/2018(3dias)<br />
+            Telefone: {{paciente?.cellphone| maskCustom: 'tel'}}</h4>
+        </div>
+      </div>
+      <div class="" style="width: 70px">
+        <div class="rectangle m-2" style="background: #ef5350"> </div>
+        <div class="rectangle m-2"> </div>
+        <div class="rectangle m-2" style="background: #2196f3"> </div>
+        <div class="rectangle m-2"> </div>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap" style="border-top: #eef5f9 solid 1px!important">
+      <div class="clickPanel" [ngx-scroll-to]="'#hipertensao'">
+        <i class="mv-hosp font-si font-size-30" style="color: #1E369B;"> hipertensao</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              140/100
+            </div>
+            <small>mmHg</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="border-alert"></div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#frequencia_cardiaca'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> frequencia_cardiaca</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              69
+            </div>
+            <small>bpm</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="border-alert"></div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#oxigenio'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> oxigenio</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              98%
+            </div>
+            <small>SpO2</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle" style="border: 2px solid #50ef53;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#imc'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> imc</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              21.5
+            </div>
+            <small>%</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle" style="border: 2px solid #50ef53;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#diabetes'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> diabetes</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              85 <br />
+            </div>
+            <small>mg/dll</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle" style="border: 2px solid #50ef53;"></div>
+          </div>
+        </div>
+        <div class="border-alert"></div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#afericao'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> afericao</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              36.2
+            </div>
+            <small>°C</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle" style="border: 2px solid #ffcb7b;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#caminhar'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> caminhar</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              9.837
+            </div>
+            <small>Passos</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle" style="border: 2px solid #ffcb7b;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#patologia'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> patologia</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              120
+            </div>
+            <small>mg/dll</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle" style="border: 2px solid #ffcb7b;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clickPanel" [ngx-scroll-to]="'#soroterapia'">
+        <i class="mv-hosp" style="color: #1E369B; font-size: 30px"> soroterapia</i>
+        <div class="d-flex justify-content-center">
+          <div>
+            <div class="h-15">
+              1500
+            </div>
+            <small>ml</small>
+          </div>
+          <div class="m-1 position-relative">
+            <div class="rectangle2"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card m-2" style="min-height: 500px;">
+  <div class="card-block">
+    <ngb-tabset class="tabpanel tab-header">
+      <ngb-tab title="Monitoramento">
+        <ng-template ngbTabContent>
+          <div class="card" style="box-shadow: none!important">
+            <div class="card-body" id="hipertensao">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B;"> hipertensao</i>
+                Pressão Arterial
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="
+                flex-fill text-center p-2">
+                  <div class="font-size-26">140/100</div>
+                  <div class="font-size-14">mmHg
+                    <br /> 12/12/2017 - 09:13</div> <br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-red"></i>
+                      Há 365 dias
+                    </div>
+                    <i class="p-1 zmdi zmdi-link font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]=bloodPressure></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="frequencia_cardiaca">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B;"> frequencia_cardiaca</i>
+                Frequência Cardíaca
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">80</div>
+                  <div class="font-size-14">bpm
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-red"></i>
+                      Há 12 dias
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='frequencyCardio'></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="oxigenio">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B; font-size: 30px"> oxigenio</i>
+                Oxigenação
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">98%</div>
+                  <div class="font-size-14">SpO2
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-green"></i>
+                      Em dia.
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='oxigenation'></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="imc">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B; font-size: 30px"> imc</i>
+                Índice de Gordura Corporal
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">21.5</div>
+                  <div class="font-size-14">%
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-green"></i>
+                      Em dia.
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='gorduraCorporal'></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="diabetes">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B; font-size: 30px"> diabetes</i>
+                Glicemia Capilar
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">85</div>
+                  <div class="font-size-14">mg/dll
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-red"></i>
+                      Há 1 dia
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='glicemiaCapilar'></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="afericao">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B; font-size: 30px"> afericao</i>
+                Temperatura
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">36,2</div>
+                  <div class="font-size-14">C°
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-green"></i>
+                      Em dia.
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='temperatura'></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="caminhar">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B; font-size: 30px"> caminhar</i>
+                Passos
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">9.837</div>
+                  <div class="font-size-14">passos
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-green"></i>
+                      Em dia.
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='passos'></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="patologia">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B; font-size: 30px"> patologia</i>
+                Colesterol
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">120</div>
+                  <div class="font-size-14">mg/dll
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-green"></i>
+                      Em dia.
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='colesterol'></high-chart>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" id="soroterapia">
+              <div style="border-bottom: #e6edf1 solid 1px">
+                <i class="mv-hosp font-si font-size-20" style="color: #1E369B; font-size: 30px"> soroterapia</i>
+                Hidratação
+                <a class="pointer font-size-20" [ngx-scroll-to]="'#back'">
+                  <i class="zmdi zmdi-long-arrow-up text-blue"></i>
+                </a>
+              </div>
+              <div class="d-flex flex-content-end">
+                <div class="flex-fill text-center p-2">
+                  <div class="font-size-26">1500</div>
+                  <div class="font-size-14">ml
+                    <br /> 12/12/2018 - 19:13
+                  </div><br />
+                  <div class="d-flex justify-content-between font-size-16 text-left">
+                    <div>
+                      <i class="zmdi zmdi-time text-green"></i>
+                      Em dia.
+                    </div>
+                    <i class="p-1 zmdi zmdi-smartphone font-size-20"></i>
+                  </div>
+                </div>
+                <div class="flex-fill text-center p-2 font-size-16" style="border-left: #e6edf1 solid 1px">
+                  1x Por Semana<br />
+                  75 em dia<br />
+                  12 atrasadas<br />
+                  8 perdidas
+                </div>
+                <div class="p-2" style="border-left: #e6edf1 solid 1px">
+                  <high-chart [data]='hidratacao'></high-chart>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Personal Health">
+        <ng-template ngbTabContent>
+          <div class="card">
+            <header class="card-header">
+              <h2 class="card-title">Global Health</h2>
+            </header>
+            <div class="card-block">
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Chat">
+        <ng-template ngbTabContent>
+          <div class="card">
+            <header class="card-header">
+              <h2 class="card-title">Mensagens</h2>
+            </header>
+            <div class="card-block">
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>

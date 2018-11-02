@@ -15,12 +15,17 @@
       <!-- <li class="sidebar-header">NAVIGATION</li> -->
       <li routerLinkActive="active">
         <a href="javascript:void(0)" class="">
-          <i class="zmdi zmdi-accounts-alt"></i>Pacientes
+          <i class="zmdi zmdi-desktop-windows"></i>Monitoramento
         </a>
       </li>
       <li routerLinkActive="active">
-        <a href="javascript:void(0)" class="">
+        <a href="javascript:void(0)" [routerLink]="['/dashboards']" class="">
           <i class="zmdi zmdi-view-dashboard"></i>Dashboards
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a href="javascript:void(0)" [routerLink]="['/pacientes']" class="">
+          <i class="zmdi zmdi-accounts-alt"></i>Pacientes
         </a>
       </li>
       <li routerLinkActive="active">

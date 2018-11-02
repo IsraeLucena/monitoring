@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProgramasComponent } from './programas.component';
 import { SharedModule } from '../../shared/shared.module';
+
 const PROGRAMAS_ROUTE = [
   {
     path: '', component: ProgramasComponent,

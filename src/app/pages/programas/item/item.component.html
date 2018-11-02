@@ -6,185 +6,256 @@
       </a>
     </div>
     <div class="ml-auto p-2">
-      <a href="javascript:void(0)" class="btn btn-accent btn-sm mr-3" (click)="criarPrograma()">
+      <a href="javascript:void(0)" class="btn btn-accent btn-sm mr-3" (click)="onSubmit(formProg)">
         <i class="zmdi zmdi-check"></i> Salvar
       </a>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="card p-3" style="margin-bottom: 0;">
-    <form>
-      <div class="form-row align-items-center">
+<div class="card m-2">
+  <div class="card-block pl-3 pr-3" style="margin-bottom: 0;">
+    <form class="" (keyup.enter)="onSubmit(formProg)" name="formProg" (ngSubmit)="onSubmit(formProg)" [formGroup]="formProg"
+      novalidate autocomplete="off">
+      <div class="d-flex justify-content-between mb-2">
         <div class="col-sm-3 my-1">
-          <label for="inputPrograma">Programa*</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="name" name="name" value={{programa?.name}} placeholder=" Programa 1">
+          <div class="form-group ">
+            <label for="nameProg" class="control-label">Nome</label>
+            <input type="text" class="form-control" autocomplete="new-password" formControlName="nameProg" [(ngModel)]="programa.name"
+              [ngClass]="displayFieldCss('nameProg', formProg)" placeholder="Nome do Programa">
+            <div class="invalid-feedback">
+              Insira um nome.
+            </div>
+          </div>
         </div>
         <div class="col-sm-2 my-1">
-          <label for="inputSigla">Sigla*</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="programKey" name="programKey" value={{programa?.programKey}}
-            placeholder="XVC">
+          <div class="form-group">
+            <label for="sigla" class="control-label">Sigla</label>
+            <input type="text" class="form-control" formControlName="sigla" [(ngModel)]="programa.programKey" [ngClass]="displayFieldCss('sigla', formProg)"
+              placeholder="XXX1">
+            <div class="invalid-feedback">
+              Insira uma sigla.
+            </div>
+          </div>
         </div>
         <div class="col-sm-7 my-1">
-          <label for="inputDescricao">Descrição*</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="description" name="description" value={{programa?.description}}
-            placeholder="Programa de monitoramento ...">
+          <div class="form-group">
+            <label for="description" class="control-label">Descrição</label>
+            <input type="text" class="form-control" formControlName="description" [(ngModel)]="programa.description"
+              [ngClass]="displayFieldCss('description', formProg)" placeholder="Programa de monitoramento ...">
+            <div class="invalid-feedback">
+              Insira uma descrição.
+            </div>
+          </div>
         </div>
       </div>
     </form>
   </div>
-</div>
-<div class="card-block pl-3 pr-3">
-  <ngb-tabset class="tabpanel tab-header">
-    <ngb-tab title="Participantes">
-      <ng-template ngbTabContent>
-        <div class="card">
-          <header class="card-header p-0">
-            <div class="d-flex">
-              <div class="">
-                <a href="javascript:void(0)" class="btn btn-accent btn-sm ml-3" (click)="open(content)">
-                  <i class="zmdi zmdi-plus-circle-o"></i> Participante
-                </a>
+  <div class="card-block pl-3 pr-3" *ngIf="itemId > 0" style="min-height: 500px;">
+    <ngb-tabset class="tabpanel tab-header">
+      <ngb-tab title="Participantes">
+        <ng-template ngbTabContent>
+          <div class="card">
+            <header class="card-header p-0">
+              <div class="d-flex justify-content-between">
+                <div class="">
+                  <a href="javascript:void(0)" class="btn btn-accent btn-sm ml-3" (click)="open(content)">
+                    <i class="zmdi zmdi-plus-circle-o"></i> Participante
+                  </a>
+                </div>
+                <div class="pl-2 hidden">
+                  <a href="javascript:return false" class="btn btn-accent btn-sm mr-3 disabled">
+                    <i class="zmdi zmdi-cloud-upload"></i> Importar CSV
+                  </a>
+                </div>
+                <div class="p-2" style="max-width: 250px; width: 250px; min-width: 250px;">
+                  <ng-select [items]="filterItem" [multiple]="true" bindValue="definition" [(ngModel)]="selectedFilter"
+                    placeholder="Filtro" (change)="alterafiltro($event)">
+                    <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                      <span class="ng-value-label"><i [ngClass]=item.class></i></span>
+                      <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                    </ng-template>
+                    <ng-template ng-option-tmp let-item="item">
+                      <i [ngClass]=item.class> </i> {{item.type}}
+                    </ng-template>
+                  </ng-select>
+                </div>
+                <div class="input-group p-2" style="max-width: 250px; width: 250px; min-width: 250px;">
+                  <input type="text" [(ngModel)]="userFilter.name" name="nameFilter" class="form-control" placeholder="Pesquisar pelo nome"
+                    aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">
+                      <i class="zmdi zmdi-search"></i>
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div class="pl-2">
-                <a href="javascript:return false" class="btn btn-accent btn-sm mr-3 disabled">
-                  <i class="zmdi zmdi-cloud-upload"></i> Importar CSV
-                </a>
+            </header>
+            <div class="card-block">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>CPF</th>
+                    <th>Situação</th>
+                    <th>Download</th>
+                    <th>Convite</th>
+                    <th>Ativo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of usersFilter| filterBy: userFilter;">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.cellphone| maskCustom: 'tel'}}</td>
+                    <td>{{user.cpf| maskCustom: 'cpf'}}</td>
+                    <td class="text-center">
+                      <i [ngClass]="caseSituacao(user.status)" style="font-size: 30px;"></i>
+                    </td>
+                    <td class="text-center">
+                      <i class="zmdi zmdi-cloud-download" [ngClass]="user.download ? 'text-green':''" style="font-size: 30px;"></i></td>
+                    <td class="text-center">
+                      <i class="zmdi zmdi-mail-send text-yellow" style="font-size: 30px; cursor: pointer;" placement="bottom"
+                        ngbTooltip="Reenviar Convite" (click)="reenviarConvite(user.patientId, user.programId, user.status)"></i></td>
+                    <td>
+                      <div>
+                        <app-el-checkbox [val]="user.active" (valChange)="retornoCheck($event, user.id)"></app-el-checkbox>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <!-- <ngb-tab title="Indicadores">
+        <ng-template ngbTabContent>
+          <div class="card">
+            <div class="card-block">
+              <div class="d-flex">
+                <div class="p-2">
+                  <h2> Indicadores</h2>
+                </div>
+                <div class="ml-auto p-2">
+                  <h2>Acompanhamento</h2>
+                </div>
               </div>
-              <div class="input-group mt-2 mr-3 mb-2">
-                <input type="text" class="form-control" placeholder="Pesquisar pelo nome" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2">
-                    <i class="zmdi zmdi-search"></i>
-                  </span>
+              <hr class="m-0" />
+              <div class="d-flex" *ngFor="let indicator of indicatorsProgram">
+                <div class="p-2">
+                  <i class="zmdi zmdi-account-box-phone" style="font-size: 25px;"></i>
+                </div>
+                <div class="p-2">
+                  <h4 style="color: #8692A4;"> {{indicator.name}} </h4>
+                </div>
+                <div class="ml-auto p-2">
+                  <app-el-checkbox></app-el-checkbox>
                 </div>
               </div>
             </div>
-          </header>
-          <div class="card-block">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>Telefone</th>
-                  <th>CPF</th>
-                  <th>Aceite</th>
-                  <th>Download</th>
-                  <th>Ativo</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let user of usersProgram">
-                  <td>{{user.name}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.cellphone}}</td>
-                  <td>{{user.cpf}}</td>
-                  <td class="text-center">
-                    <i class="zmdi zmdi-check text-green" style="font-size: 30px;"></i>
-                  </td>
-                  <td class="text-center">
-                    <i class="zmdi zmdi-cloud-download text-green" style="font-size: 30px;"></i></td>
-                  <td>
-                    <div>
-                      <app-el-checkbox></app-el-checkbox>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
-        </div>
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Indicadores">
-      <ng-template ngbTabContent>
-        <div class="card">
-          <div class="card-block">
-            <div class="d-flex">
-              <div class="p-2">
-                <h2> Indicadores</h2>
-              </div>
-              <div class="ml-auto p-2">
-                <h2>Ativo</h2>
-              </div>
-            </div>
-            <hr class="m-0" />
-            <div class="d-flex" *ngFor="let indicator of indicatorsProgram">
-              <div class="p-2">
-                <!-- <i class="zmdi zmdi-account-box-phone" style="font-size: 25px;"></i> -->
-              </div>
-              <div class="p-2">
-                <h4 style="color: #8692A4;"> {{indicator.name}} </h4>
-              </div>
-              <div class="ml-auto p-2">
-                <app-el-checkbox></app-el-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Alertas/Protocolos" [disabled]=true>
-      <ng-template ngbTabContent>
-        <div class="card">
-          <header class="card-header">
-            <h2 class="card-title">Card Header Three</h2>
-            <small class="card-subtitle">Paleo flexitarian bushwick letterpress</small>
-          </header>
-          <div class="card-block">
-          </div>
-        </div>
-      </ng-template>
-    </ngb-tab>
-    <ngb-tab title="Mensagens" [disabled]=true>
-      <ng-template ngbTabContent>
-        <div class="">
+        </ng-template>
+      </ngb-tab> -->
+      <!-- <ngb-tab title="Alertas/Protocolos" [disabled]=true>
+        <ng-template ngbTabContent>
           <div class="card">
             <header class="card-header">
-              <h2 class="card-title">Card Header Four</h2>
+              <h2 class="card-title">Card Header Three</h2>
               <small class="card-subtitle">Paleo flexitarian bushwick letterpress</small>
             </header>
             <div class="card-block">
             </div>
           </div>
-        </div>
-      </ng-template>
-    </ngb-tab>
-  </ngb-tabset>
+        </ng-template>
+      </ngb-tab> -->
+      <ngb-tab title="Mensagens">
+        <ng-template ngbTabContent>
+          <div class="">
+            <div class="card">
+              <header class="card-header">
+                <h2 class="card-title">Configuração das mensagens</h2>
+                <small class="card-subtitle">Mensagens eviandas para os novos participantes do programa.</small>
+              </header>
+              <div class="card-block">
+                <div class="form-group shadow-textarea">
+                  <label for="exampleFormControlTextarea6">Texto para envio no email</label>
+                  <textarea class="form-control z-depth-1" [ngModel]="data" (ngModelChange)="changed($event)" rows="3"
+                    placeholder=""></textarea>
+                </div>
+                <div class="form-group shadow-textarea">
+                  <label for="exampleFormControlTextarea6">Texto para envio no SMS</label>
+                  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder=""></textarea>
+                </div>
+                <div class="form-group shadow-textarea">
+                  <label for="exampleFormControlTextarea6">Texto para envio no push</label>
+                  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder=""></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
 </div>
-<ng-template #content let-c="close " let-d="dismiss ">
+<ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header ">
     <h4 class="modal-title ">Novo Participante</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" style="padding: 0">
-      <i class="zmdi zmdi-close"></i>
-      <!-- <span aria-hidden="true">&times;</span> -->
+      <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="card p-3" style="margin-bottom: 0;">
-    <form>
-      <div class="form-row align-items-center">
+  <div class="modal-body p-3">
+    <form class="needs-validation" (keyup.enter)="onSubmit(form)" name="form" (ngSubmit)="onSubmit(form)" [formGroup]="form"
+      novalidate autocomplete="off">
+      <div class="d-flex justify-content-between mb-2">
         <div class="col-sm-3 my-1">
-          <label>Nome*</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="nameParticipant" name="nameParticipant" placeholder="Participante">
+          <div class="form-group ">
+            <label for="name" class="control-label">Nome</label>
+            <input type="text" class="form-control" autocomplete="new-password" formControlName="name" [ngClass]="displayFieldCss('name', form)"
+              placeholder="Nome do Participante">
+            <div class="invalid-feedback">
+              Insira um nome.
+            </div>
+          </div>
         </div>
         <div class="col-sm-3 my-1">
-          <label>E-mail*</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="emailParticipant" name="emailParticipant" placeholder="email@email.com">
+          <div class="form-group">
+            <label for="email" class="control-label">E-mail</label>
+            <input type="text" class="form-control" formControlName="email" [ngClass]="displayFieldCss('email',form)"
+              placeholder="email@email.com">
+            <div class="invalid-feedback">
+              Insira um e-mail.
+            </div>
+          </div>
         </div>
-        <div class="col-sm-2 my-1">
-          <label>Telefone*</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="cellParticipant" name="cellParticipant" placeholder="+55 81 985801313">
+        <div class="col-sm-3 my-1">
+          <div class="form-group">
+            <label for="cell" class="control-label">Celular</label>
+            <input type="text" class="form-control" formControlName="cell" [ngClass]="displayFieldCss('cell',form)"
+              placeholder="(__) _____-____" [appMaskCustom]="'(00) 00000-0000'" maxlength="15">
+            <div class="invalid-feedback">
+              Insira um celular.
+            </div>
+          </div>
         </div>
-        <div class="col-sm-2 my-1">
-          <label>CPF*</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="cpfParticipant" name="cpfParticipant" placeholder="123.222.333-44">
+        <div class="col-sm-3 my-1">
+          <div class="form-group">
+            <label for="cpf" class="control-label">CPF</label>
+            <input type="text" class="form-control" formControlName="cpf" [ngClass]="displayFieldCss('cpf', form)"
+              placeholder="___.___.___-__" [appMaskCustom]="'000.000.000-00'" maxlength="14">
+            <div class="invalid-feedback">
+              Insira um CPF.
+            </div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-bottom: -12px; margin-left: 10px;" (click)="createParticipant()">Adicionar</button>
       </div>
     </form>
   </div>
-  <!-- <div class="modal-footer ">
-    <button type="button " class="btn btn-outline-dark " (click)="c( 'Close click') ">Fechar</button>
-  </div> -->
+  <div class="modal-footer ">
+    <button class="btn btn-sm btn-primary " (click)="onSubmit(form)">Salvar</button>
+    <button type="button " class="btn btn-sm btn-default " (click)="c( 'Close click') ">Cancelar</button>
+  </div>
 </ng-template>

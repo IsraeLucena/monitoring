@@ -1,5 +1,17 @@
+<style>
+  .focus:hover {
+    /* webkit-filter: blur(4px); */
+    /* Chrome, Safari, Opera */
+    /* filter: blur(4px); */
+    /* color: #000000 !important; */
+    /* border-color: #2196F3 !important; */
+    border: solid rgba(100, 184, 252, 0.651) 0.1px !important;
+
+  }
+</style>
+
 <div class="p-2 mt-1">
-  <div class="row" *ngIf="!statusNew">
+  <div class="row">
     <div class="col-12 col-md-auto col-lg-4">
       <a href="javascript:void(0)" class="btn btn-accent btn-sm ml-3" (click)="route()">
         <i class="zmdi zmdi-plus-circle-o"></i> Novo programa
@@ -7,7 +19,8 @@
     </div>
     <div class="col">
       <div class="input-group mt-2 ml-3">
-        <input type="text" class="form-control" placeholder="Pesquisar" aria-describedby="basic-addon2">
+        <input type="text" [(ngModel)]="userFilter.name" name="nameFilter" class="form-control" placeholder="Pesquisar"
+          aria-describedby="basic-addon2">
         <div class="input-group-append">
           <span class="input-group-text" id="basic-addon2">
             <i class="zmdi zmdi-search"></i>
@@ -43,35 +56,40 @@
       </div>
     </div>
   </div>
-  <div class="mt-2" *ngIf="!statusNew">
-    <div class="card mb-1" *ngFor="let programa of listaProgramas">
-      <div class="card-block">
+  <div class="mt-2">
+    <div class="card mb-1 focus" *ngFor="let programa of listaProgramas| filterBy: userFilter;">
+      <div class="card-block focus">
         <div class="d-flex" style="padding-right: 80px">
           <div class="p-2 text-truncate" style="width: 200px; max-width: 200px; min-width: 200px;" (click)="item(programa.id)">
             <span class="d-block font-weight-700"> {{programa.name}}</span>
           </div>
-          <div class="p-2 text-truncate" style="width: 50px; max-width: 50px; min-width: 50px;">
+          <div class="p-2 text-truncate" style="width: 70px; max-width: 70px; min-width: 70px;" (click)="item(programa.id)">
             <span class=""> {{programa.programKey}} </span>
           </div>
-          <div class="p-2 text-truncate" style="max-width: 470px;">
+          <div class="p-2 text-truncate" style="max-width: 390px;" (click)="item(programa.id)">
             <span class=""> {{programa.description}}</span>
           </div>
           <div class="ml-auto p-2">
-            <span class="text-blue p-2">
-              <i class="zmdi zmdi-accounts-add"></i> {{programa.total}} </span>
-            <span class="text-green p-2">
-              <i class="zmdi zmdi-account"></i>{{programa.accept}} </span>
-            <span class="text-red p-2">
-              <i class="zmdi zmdi-accounts"></i> {{programa.rejected}} </span>
-            <span class="text-gray p-2">
-              <i class="zmdi zmdi-accounts"></i> {{programa.ignore}} </span>
+            <span class="text-blue pr-2" placement="bottom" ngbTooltip="Total de convites">
+              <i class="zmdi zmdi-accounts-add" style="font-size: 25px"></i> {{programa.total}} </span>
+            <span class="text-green pr-2" placement="bottom" ngbTooltip="Aceitos">
+              <i class="zmdi zmdi-accounts" style="font-size: 25px"></i>{{programa.accept}} </span>
+            <span class="text-red pr-2" placement="bottom" ngbTooltip="Rejeitados">
+              <i class="zmdi zmdi-accounts" style="font-size: 25px"></i> {{programa.rejected}} </span>
+            <span class="text-gray pr-2" placement="bottom" ngbTooltip="Aguardando">
+              <i class="zmdi zmdi-accounts" style="font-size: 25px"></i> {{programa.ignore}} </span>
+            <span class="text-yellow pr-2" placement="bottom" ngbTooltip="Cancelados pelo usuário">
+              <i class="zmdi zmdi-accounts" style="font-size: 25px"></i> {{programa.cancel}} </span>
+            <span class="text-black" placement="bottom" ngbTooltip="Inativados">
+              <i class="zmdi zmdi-accounts-outline" style="font-size: 25px"></i> {{programa.totalPatientInactive }}
+            </span>
           </div>
           <div class="p-2">
             <div class="">
-              <div style="right: 60px; position: absolute;">
+              <div style="right: 30px; position: absolute;">
                 <app-el-checkbox></app-el-checkbox>
               </div>
-              <div>
+              <!-- <div>
                 <ul class="actions icons top-right mr-3" style="top: 3px;">
                   <li class="dropdown" ngbDropdown>
                     <a href="javascript:void(0)" ngbDropdownToggle>
@@ -90,7 +108,7 @@
                     </ul>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -98,84 +116,4 @@
     </div>
   </div>
   <!-- end user -->
-</div>
-<!-- sss -->
-<div class="row" *ngIf="statusNew">
-  <div class="col">
-    <a href="javascript:void(0)" class="btn btn-accent btn-sm ml-3" (click)="userNew(false)">
-      <i class="zmdi zmdi-format-list-bulleted"></i> Lista de usuário
-    </a>
-  </div>
-  <div class="col text-right">
-    <a href="javascript:void(0)" class="btn btn-accent btn-sm mr-3 disabled" (click)="userNew(false)">
-      <i class="zmdi zmdi-check"></i> Salvar
-    </a>
-  </div>
-</div>
-<!-- ttt -->
-<div class="m-3" *ngIf="statusNew">
-  <div class="card">
-    <div class="card-block">
-      <form>
-        <h2> Novo usuário </h2>
-        <div class="form-row">
-          <div class="col-auto">
-            <div class="text-center pt-4" style="width: 150px;height: 150px; background-color:transparent; border: 1px dashed #8f9eb5;">
-              <img src="assets/img/foto-img.png" class="w-100" alt="Imagem">
-            </div>
-          </div>
-          <div class="col row">
-            <div class="col">
-              <div class="form-group">
-                <label> Nome* </label>
-                <input type="text" class="form-control" placeholder=" Nome ">
-              </div>
-            </div>
-            <div class="col-auto">
-              <div class="form-group">
-                <label> Perfil de Acesso* </label>
-                <select class="form-control">
-                  <option value="ad"> Admin </option>
-                  <option value="rec"> Recepcionista </option>
-                  <option value="pre"> Prestador </option>
-                  <option value="fi"> Financeiro </option>
-                  <option value="per"> Personalizado </option>
-                </select>
-              </div>
-            </div>
-            <div class="col-auto">
-              <button type="button" class="btn mr-3 btn-sm btn-gray-custom" style="margin-top: 36px;margin-bottom: 0px;">P</button>
-            </div>
-            <div class="w-100p"></div>
-            <div class="col">
-              <div class="form-group ">
-                <label>E-mail* </label>
-                <input type="text" class="form-control" placeholder=" E-mail ">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group ">
-                <label>Telefone </label>
-                <input type="text" class="form-control" placeholder=" Telefone ">
-              </div>
-            </div>
-          </div>
-          <div class="w-100p"></div>
-          <hr class="w-100p mt-4">
-          <div class="col">
-            <div class="form-group ">
-              <label>Login* </label>
-              <input type="text" class="form-control" placeholder=" Login ">
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Senha* </label>
-              <input type="password" class="form-control" placeholder=" ****** ">
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
 </div>

@@ -1,0 +1,28 @@
+@import "../../../shared/styles/main/util/index";
+
+:host /deep/ {
+	.doughnut-chart {
+		height: 350px;
+		width: 350px;
+		max-height: 350px;
+		max-width: 350px;
+	}
+}
+
+.customTable.table th,
+.customTable.table td {
+  border-top: none;
+  border-bottom: 1px solid #dee2e6;
+}
+
+
+.hoverable:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.clickDivPanel{
+	width: 70px;
+	border-right: 3px #eef5f9 solid;
+	height: 100%;
+	cursor: pointer;
+}

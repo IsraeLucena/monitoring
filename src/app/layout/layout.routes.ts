@@ -14,6 +14,13 @@ const LAYOUT_ROUTES: Routes = [
         loadChildren: '../pages/dashboards/dashboards.module#DashboardsModule'
       },
       //---------------------------------------------------------->
+      //Pacientes
+      //---------------------------------------------------------->
+      {
+        path: 'pacientes',
+        loadChildren: '../pages/pacientes/pacientes.module#PacientesModule'
+      },
+      //---------------------------------------------------------->
       //Programas
       //---------------------------------------------------------->
       {

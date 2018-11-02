@@ -30,6 +30,8 @@
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/mdi/css/materialdesignicons.min.css",
               "./node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+              "./node_modules/slick-carousel/slick/slick.css",
+              "./node_modules/slick-carousel/slick/slick-theme.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -42,7 +44,10 @@
               "./node_modules/@fortawesome/fontawesome-free-regular/index.js",
               "./node_modules/@fortawesome/fontawesome-free-brands/index.js",
               "./node_modules/fullcalendar/dist/fullcalendar.min.js",
-              "./node_modules/fullcalendar/dist/locale/pt-br.js"
+              "./node_modules/fullcalendar/dist/locale/pt-br.js",
+              "./node_modules/jquery-mask-plugin/dist/jquery.mask.min.js",
+              "./src/assets/js/jquery.disableAutoFill.min.js",
+              "./node_modules/slick-carousel/slick/slick.js"
             ]
           },
           "configurations": {

@@ -11,3 +11,40 @@
 @import "./app/shared/styles/app";
 
 @import "./assets/custom.css";
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+@import '../node_modules/ngx-toastr/toastr.css';
+
+.nav-tabs .nav-item .nav-link.active:after {
+  background: #42a5f5;
+  }
+
+.custom-carousel {
+  background-color: #EAF0F3;
+  & .slick-prev,
+  & .slick-next {
+      width: 25px;
+      height: 100%;
+      background-color: #ccc;
+      color: #000000;
+  }
+  & .slick-prev:hover,
+  & .slick-prev:focus,
+  & .slick-next:hover,
+  & .slick-next:focus {
+      color: #000000;
+      outline: none;
+      background: #ccc;
+  }
+  & .slick-prev:before,
+  & .slick-next:before {
+      color: #000000;
+  }
+  & .slick-next {
+      right: -26px;
+  }
+  & .slick-prev {
+      left: -26px;
+  }
+}
